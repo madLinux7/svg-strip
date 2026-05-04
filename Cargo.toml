@@ -1,11 +1,13 @@
 [package]
 name = "svg-strip"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2021"
 description = "A fast and aggressive SVG minification tool tailored for inline HTML and standalone use."
 license = "MIT"
 repository = "https://github.com/madLinux7/svg-strip"
-
+readme = "README.md"
+keywords = ["svg", "minify", "cli", "optimizer"]
+categories = ["command-line-utilities", "web-programming"]
 
 [dependencies]
 colored = "3.1.1"
