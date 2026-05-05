@@ -79,9 +79,9 @@ impl SvgStripper {
         // Strip xmlns and xmlns:* attributes from the <svg> tag as browsers do not need them if inline
         if self.config.inline_mode && root.name == "svg" {
             root.attributes.retain(|k, _| !k.starts_with("xmlns"));
-            // xmltree parses xmlns into these specific fields, so we must clear them
-            root.namespace = None;
-            root.namespaces = None;
+            // xmltree stores parsed namespaces on every element — if we only
+            // clear the root, the serializer re-emits xmlns on each child.
+            strip_namespaces_recursive(root);
         }
 
         if self.config.remove_metadata {
@@ -117,6 +117,19 @@ impl SvgStripper {
         }
         
         stats
+    }
+}
+
+/// Recursively remove namespace declarations from all elements.
+/// Required for inline SVG mode: when the root <svg> no longer
+/// declares xmlns, xmltree would re-emit it on every child.
+fn strip_namespaces_recursive(elem: &mut Element) {
+    elem.namespace = None;
+    elem.namespaces = None;
+    for child in &mut elem.children {
+        if let XMLNode::Element(e) = child {
+            strip_namespaces_recursive(e);
+        }
     }
 }
 
