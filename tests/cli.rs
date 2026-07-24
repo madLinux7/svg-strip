@@ -52,8 +52,10 @@ fn icon_file_summary_ends_with_global_css_tip() {
 
     assert!(result.status.success());
     assert!(result.stderr.is_empty());
-    assert!(written_svg
-        .contains(r#"style="width: 20px; height: 20px; overflow: hidden; fill: currentColor""#));
+    assert!(
+        written_svg
+            .contains(r#"style="width: 20px; height: 20px; overflow: hidden; fill: currentColor""#)
+    );
 
     let stdout = String::from_utf8(result.stdout).unwrap();
     assert!(stdout.trim_end().ends_with(
