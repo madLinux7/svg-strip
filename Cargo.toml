@@ -2,7 +2,7 @@
 name = "svg-strip"
 version = "1.0.0"
 edition = "2021"
-description = "A fast and aggressive SVG minification tool tailored for inline HTML and standalone use."
+description = "Fast and aggressive SVG minification CLI tool for shrinking SVGs for inline HTML, Vue and Svelte component templates and standalone files"
 license = "MIT"
 repository = "https://github.com/madLinux7/svg-strip"
 readme = "README.md"
