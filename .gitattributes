@@ -1,0 +1,2 @@
+install.sh linguist-detectable=false
+install.ps1 linguist-detectable=false

@@ -110,13 +110,51 @@ Stripped SVG written to raw_icon_stripped.svg
 
 ## Installation
 
-You must have [Rust and Cargo](https://rustup.rs/) installed. Clone the repository and build the project:
+### Local user install and update script
+
+**Linux / macOS:**
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/madLinux7/svg-strip/main/install.sh | sh
+```
+
+Installs to `~/.local/bin` by default. Override this with
+`INSTALL_DIR=/custom/path`.
+
+**Windows (PowerShell):**
+
+```powershell
+irm https://raw.githubusercontent.com/madLinux7/svg-strip/main/install.ps1 | iex
+```
+
+Installs to `%LOCALAPPDATA%\svg-strip` and adds it to your user `PATH`.
+Restart the terminal before using `svg-strip`.
+
+### From GitHub Releases
+
+Download the latest binary for your platform from
+[Releases](https://github.com/madLinux7/svg-strip/releases) and place it in
+your `PATH`.
+
+```sh
+# Example for Linux x86_64
+curl -fL https://github.com/madLinux7/svg-strip/releases/latest/download/svg-strip-linux-x86_64 -o svg-strip
+chmod +x svg-strip
+sudo mv svg-strip /usr/local/bin/
+```
+
+### From source
+
+You must have [Rust and Cargo](https://rustup.rs/) installed. Clone the
+repository and build the project:
 
 ```bash
-git clone git@github.com:madLinux7/svg-strip.git
+git clone https://github.com/madLinux7/svg-strip.git
 cd svg-strip
 make build
 ```
+
+### Optimized local build
 
 For an optimized, UPX-compressed binary, install
 [UPX](https://upx.github.io/) and run:
